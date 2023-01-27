@@ -1,7 +1,14 @@
 class Sprite {
-  constructor({ position, image }) {
+  constructor({ position, imageSrc }) {
     this.position = position;
-    this.image = image;
+    this.image = new Image();
+    this.image.onload = () => {
+      this.width = this.image.width;
+      this.height = this.image.height;
+
+      console.log(this.height, this.width);
+    }
+    this.image.src = imageSrc;
   }
 
   draw() {
